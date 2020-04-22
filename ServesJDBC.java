@@ -15,15 +15,15 @@ public class ServesJDBC {
     private Statement st;
     private ResultSet rs;
 
-    public List<Serves> selectST(String filtro) throws SQLException, ClassNotFoundException {
-
+    public List<Serves> selectST(String campo, String valor) throws SQLException, ClassNotFoundException {
         List<Serves> listaServes = new ArrayList<>();
 
         //inicia la conexión
         abrirConectar();
         //se ingresa la consulta
-        rs = st.executeQuery("select * from serves where price=" + filtro);
-        
+        rs = st.executeQuery("select * from serves where " + campo + "=" + valor);
+//        rs = st.executeQuery("select * from serves where price=" + filtro);
+
         System.out.println("");
         while (rs.next()) {
             //se cogen los valores que devolvió la consulta
@@ -42,6 +42,49 @@ public class ServesJDBC {
 
         return listaServes;
 
+    }
+
+    public void mostrarInfo(String campo) throws SQLException, ClassNotFoundException {
+        if (campo == "bar") {
+            mostrarCampo(campo);
+        } else if (campo == "beer") {
+            mostrarCampo(campo);
+        } else if (campo == "price") {
+            mostrarCampo(campo);
+
+        }
+
+    }
+
+    public void mostrarCampo(String campo) throws SQLException, ClassNotFoundException {
+        abrirConectar();
+        rs = st.executeQuery("select distinct " + campo + " from serves");
+        ResultSetMetaData rsmd = rs.getMetaData();
+
+        System.out.println("");
+        System.out.print("opciones de la columnas: ");
+        while (rs.next()) {
+            System.out.print(rs.getString(campo) + "    ");
+
+        }
+        System.out.println("");
+        closeGeneral();
+
+    }
+
+    public void mostrarColumna() throws SQLException, ClassNotFoundException {
+        abrirConectar();
+        rs = st.executeQuery("select * from serves");
+        ResultSetMetaData rsmd = rs.getMetaData();
+        int i = 0;
+        System.out.print("\nColumnas: ");
+        while (rs.next() && i < rsmd.getColumnCount()) {
+            System.out.print(rsmd.getColumnName(i + 1)
+                    + " ");
+            i++;
+        }
+        System.out.println();
+        closeGeneral();
     }
 
     public void abrirConectar() throws SQLException, ClassNotFoundException {

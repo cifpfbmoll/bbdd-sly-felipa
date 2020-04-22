@@ -26,9 +26,13 @@ public class Practica8 {
 
                         try {
                             ServesJDBC s = new ServesJDBC();
-                            System.out.println("Ingresa un precio (por ejemplo: 2.75 ó 3.00): ");
-                            String filtro = read.next();
-                            s.selectST(filtro);
+                            s.mostrarColumna();
+                            System.out.println("Ingresa un campo: ");
+                            String campo = read.nextLine();
+                            s.mostrarCampo(campo);
+                            System.out.println("Ingresa un filtro: ");
+                            String valor = read.nextLine();
+                            s.selectST(campo, valor);
                         } catch (ClassNotFoundException c) {
                             System.out.println("No se pudo conectar");
                             c.printStackTrace();
