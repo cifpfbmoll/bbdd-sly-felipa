@@ -12,6 +12,7 @@ public class Serves implements Serializable {
     }
 
     public Serves(String bar, String beer, Double price) {
+        
         this.setBar(bar);
         this.setBeer(beer);
         this.setPrice(price);
