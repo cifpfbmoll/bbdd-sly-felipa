@@ -3,3 +3,9 @@ BAR    BEER    PRICE
 James Joyce Pub    Dixie    3.0
 Satisfaction    Dixie    2.75
 
+--- selectST ---
+BAR    BEER    PRICE
+The Edge    Amstel    2.75
+The Edge    Budweiser    2.5
+The Edge    Corona    3.0
+

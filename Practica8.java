@@ -50,11 +50,7 @@ public class Practica8 {
                     } else if (op2 == 2) {
                         ServesJDBC s = new ServesJDBC();
                         try {
-                            System.out.println("*****************************");
-                            System.out.println("");
-                            System.out.println("Buscando el precio... ");
-                            System.out.println("");
-                            System.out.println("*****************************");
+                 
                             s.mostrarCampo("bar");
                             System.out.println("Ingresa el nomre de tu bar favorito: ");
                             String valor1 = read.nextLine();
