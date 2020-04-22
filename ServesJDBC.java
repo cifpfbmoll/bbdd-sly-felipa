@@ -14,6 +14,7 @@ public class ServesJDBC {
     private Connection conexion;
     private Statement st;
     private ResultSet rs;
+    private ResultSetMetaData rsmd;
     private PreparedStatement pdst;
 
     public List<Serves> selectST(String campo, String valor) throws SQLException, ClassNotFoundException {
@@ -58,6 +59,7 @@ public class ServesJDBC {
         pdst.execute();
         //registro devuelto
         rs = pdst.executeQuery();
+        rsmd = rs.getMetaData();
 
         System.out.println("");
         while (rs.next()) {
@@ -69,7 +71,9 @@ public class ServesJDBC {
             serves.setBar(bar);
             serves.setBeer(beer);
             serves.setPrice(price);
-            System.out.println(bar + beer + price);
+            System.out.print(rsmd.getColumnName(1) + "    " + rsmd.getColumnName(2)
+                    + "    " + rsmd.getColumnName(3) + "\n");
+            System.out.print(bar + "    " + beer + "    " + price);
 
         }
         System.out.println("");
@@ -94,7 +98,7 @@ public class ServesJDBC {
     public void mostrarCampo(String campo) throws SQLException, ClassNotFoundException {
         abrirConectar();
         rs = st.executeQuery("select distinct " + campo + " from serves");
-        ResultSetMetaData rsmd = rs.getMetaData();
+        rsmd = rs.getMetaData();
 
         System.out.println("");
         System.out.print("opciones de la columnas: ");
@@ -115,7 +119,7 @@ public class ServesJDBC {
         System.out.print("\nColumnas: ");
         while (rs.next() && i < rsmd.getColumnCount()) {
             System.out.print(rsmd.getColumnName(i + 1)
-                    + " ");
+                    + "  ");
             i++;
         }
         System.out.println();

@@ -47,7 +47,7 @@ public class Practica8 {
                         try {
                             System.out.println("*****************************");
                             System.out.println("");
-                            System.out.println("Buscando el precio...");
+                            System.out.println("Buscando el precio... ");
                             System.out.println("");
                             System.out.println("*****************************");
                             s.mostrarCampo("bar");
