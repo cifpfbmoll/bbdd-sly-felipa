@@ -1,8 +1,9 @@
-
 package practica8;
 
-public class Serves {
-    
+import java.io.Serializable;
+
+public class Serves implements Serializable {
+
     private String bar;
     private String beer;
     private Double price;
@@ -16,7 +17,6 @@ public class Serves {
         this.setPrice(price);
     }
 
-      
     public String getBar() {
         return bar;
     }
@@ -46,6 +46,6 @@ public class Serves {
         return "bar: " + this.getBar() + ", beer: " + this.getBeer() + ", price: " + this.getPrice();
     }
     
-  
-    }
+    
 
+}

@@ -1,5 +1,6 @@
 package practica8;
 
+import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,15 +18,31 @@ public class ServesJDBC {
     private ResultSetMetaData rsmd;
     private PreparedStatement pdst;
 
-    public List<Serves> selectST(String campo, String valor) throws SQLException, ClassNotFoundException {
+    public List<Serves> selectST(String campo, String valor) throws SQLException, ClassNotFoundException, IOException {
+        String rutaEscribir = "C:/Users/sly/Documents/NetBeansProjects/Practica8/src/practica8/consultaSQL.txt";
+        File fichero = new File(rutaEscribir);
+
+        if (!fichero.exists()) {
+            fichero.createNewFile();
+            System.out.println("\nEl fichero se ha creado. Se comienza a escribir\n");
+
+        } else {
+            System.out.println("\nEl fichero existe. Se comienza a escribir\n");
+        }
+        BufferedWriter escritor = new BufferedWriter(new FileWriter(fichero));
+
         List<Serves> listaServes = new ArrayList<>();
 
         //inicia la conexión
         abrirConectar();
         //se ingresa la consulta
         rs = st.executeQuery("select * from serves where " + campo + "='" + valor + "'");
+        rsmd = rs.getMetaData();
 
-        System.out.println("");
+        escritor.write("--- selectST ---");
+        escritor.newLine();
+        escritor.write(rsmd.getColumnName(1) + "    " + rsmd.getColumnName(2)
+                + "    " + rsmd.getColumnName(3) + "\n");
         while (rs.next()) {
             //se cogen los valores que devolvió la consulta
             String bar = rs.getString("bar");
@@ -35,9 +52,10 @@ public class ServesJDBC {
             Serves serves = new Serves(bar, beer, price);
             //los objetos nuevos se agregan a la lista
             listaServes.add(serves);
-            System.out.println(bar + beer + price);
+            escritor.write(bar + "    " + beer + "    " + price + "\n");
         }
-        System.out.println("");
+        escritor.newLine();
+        escritor.close();
 
         closeGeneral();
 
@@ -45,7 +63,22 @@ public class ServesJDBC {
 
     }
 
-    public Serves selectPDST(String bar_valor, String beer_valor) throws SQLException, ClassNotFoundException {
+    public Serves selectPDST(String bar_valor, String beer_valor) throws SQLException, ClassNotFoundException, IOException {
+        String rutaEscribir = "C:/Users/sly/Documents/NetBeansProjects/Practica8/src/practica8/consultaSQLobj.txt";
+        File fichero = new File(rutaEscribir);
+        BufferedWriter escritor = new BufferedWriter(new FileWriter(fichero));
+        escritor.newLine();
+
+        try {
+            if (fichero.createNewFile()) {
+                System.out.println("El fichero se ha creado");
+            } else {
+                System.out.println("No se ha creado el fichero");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         Serves serves = new Serves();
 
         //inicia la conexión
@@ -53,15 +86,19 @@ public class ServesJDBC {
         //se prepara la consulta
         PreparedStatement pdst = conexion.prepareStatement("select * from serves where bar=? and beer=?");
         //se ingresan los valores
-        pdst.setString(1, bar_valor);
-        pdst.setString(2, beer_valor);
+
+        pdst.setString(
+                1, bar_valor);
+        pdst.setString(
+                2, beer_valor);
         //se ejecuta la consulta
         pdst.execute();
         //registro devuelto
         rs = pdst.executeQuery();
         rsmd = rs.getMetaData();
 
-        System.out.println("");
+        System.out.println(
+                "");
         while (rs.next()) {
             //se cogen los valores que devolvió la consulta
             String bar = rs.getString("bar");
@@ -76,7 +113,9 @@ public class ServesJDBC {
             System.out.print(bar + "    " + beer + "    " + price);
 
         }
-        System.out.println("");
+
+        System.out.println(
+                "");
 
         closeGeneral();
 

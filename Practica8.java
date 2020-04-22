@@ -1,5 +1,6 @@
 package practica8;
 
+import java.io.IOException;
 import java.sql.*;
 import java.lang.*;
 import java.util.*;
@@ -32,7 +33,7 @@ public class Practica8 {
                             s.mostrarCampo(campo);
                             System.out.println("Ingresa un filtro: ");
                             String valor = read.nextLine();
-                            s.selectST(campo, valor);
+                             s.selectST(campo, valor);
                         } catch (ClassNotFoundException c) {
                             System.out.println("No se pudo conectar");
                             c.printStackTrace();
@@ -40,6 +41,10 @@ public class Practica8 {
                         } catch (SQLException e) {
                             System.out.println("No se pudo conectar");
                             e.printStackTrace();
+                        } catch (IOException e) {
+                            System.out.println("No se pudo escribir en el fichero");
+                            e.printStackTrace();
+
                         }
 
                     } else if (op2 == 2) {
@@ -63,6 +68,10 @@ public class Practica8 {
 
                         } catch (SQLException e) {
                             System.out.println("No se pudo conectar");
+                            e.printStackTrace();
+
+                        } catch (IOException e) {
+                            System.out.println("No se pudo escribir en el fichero");
                             e.printStackTrace();
 
                         }

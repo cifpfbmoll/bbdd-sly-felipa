@@ -1,0 +1,5 @@
+--- selectST ---
+BAR    BEER    PRICE
+James Joyce Pub    Dixie    3.0
+Satisfaction    Dixie    2.75
+
