@@ -40,10 +40,32 @@ public class Practica8 {
                         } catch (SQLException e) {
                             System.out.println("No se pudo conectar");
                             e.printStackTrace();
-
                         }
 
                     } else if (op2 == 2) {
+                        ServesJDBC s = new ServesJDBC();
+                        try {
+                            System.out.println("*****************************");
+                            System.out.println("");
+                            System.out.println("Buscando el precio...");
+                            System.out.println("");
+                            System.out.println("*****************************");
+                            s.mostrarCampo("bar");
+                            System.out.println("Ingresa el nomre de tu bar favorito: ");
+                            String valor1 = read.nextLine();
+                            s.mostrarCampo("beer");
+                            System.out.println("Ingresa el nomre de tu cerveza favorita: ");
+                            String valor2 = read.nextLine();
+                            s.selectPDST(valor1, valor2);
+                        } catch (ClassNotFoundException c) {
+                            System.out.println("No se pudo conectar");
+                            c.printStackTrace();
+
+                        } catch (SQLException e) {
+                            System.out.println("No se pudo conectar");
+                            e.printStackTrace();
+
+                        }
 
                     } else if (op2 == 3) {
                         seguir2 = false;

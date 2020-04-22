@@ -14,6 +14,7 @@ public class ServesJDBC {
     private Connection conexion;
     private Statement st;
     private ResultSet rs;
+    private PreparedStatement pdst;
 
     public List<Serves> selectST(String campo, String valor) throws SQLException, ClassNotFoundException {
         List<Serves> listaServes = new ArrayList<>();
@@ -21,8 +22,7 @@ public class ServesJDBC {
         //inicia la conexión
         abrirConectar();
         //se ingresa la consulta
-        rs = st.executeQuery("select * from serves where " + campo + "=" + valor);
-//        rs = st.executeQuery("select * from serves where price=" + filtro);
+        rs = st.executeQuery("select * from serves where " + campo + "='" + valor + "'");
 
         System.out.println("");
         while (rs.next()) {
@@ -42,6 +42,41 @@ public class ServesJDBC {
 
         return listaServes;
 
+    }
+
+    public Serves selectPDST(String bar_valor, String beer_valor) throws SQLException, ClassNotFoundException {
+        Serves serves = new Serves();
+
+        //inicia la conexión
+        abrirConectar();
+        //se prepara la consulta
+        PreparedStatement pdst = conexion.prepareStatement("select * from serves where bar=? and beer=?");
+        //se ingresan los valores
+        pdst.setString(1, bar_valor);
+        pdst.setString(2, beer_valor);
+        //se ejecuta la consulta
+        pdst.execute();
+        //registro devuelto
+        rs = pdst.executeQuery();
+
+        System.out.println("");
+        while (rs.next()) {
+            //se cogen los valores que devolvió la consulta
+            String bar = rs.getString("bar");
+            String beer = rs.getString("beer");
+            Double price = rs.getDouble("price");
+            //las variables construyen un obj nuevo
+            serves.setBar(bar);
+            serves.setBeer(beer);
+            serves.setPrice(price);
+            System.out.println(bar + beer + price);
+
+        }
+        System.out.println("");
+
+        closeGeneral();
+
+        return serves;
     }
 
     public void mostrarInfo(String campo) throws SQLException, ClassNotFoundException {
