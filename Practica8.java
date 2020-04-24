@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.sql.*;
 import java.lang.*;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Practica8 {
 
@@ -33,7 +31,7 @@ public class Practica8 {
                             s.mostrarCampo(campo);
                             System.out.println("Ingresa un filtro: ");
                             String valor = read.nextLine();
-                             s.selectST(campo, valor);
+                            s.selectST(campo, valor);
                         } catch (ClassNotFoundException c) {
                             System.out.println("No se pudo conectar");
                             c.printStackTrace();
@@ -48,9 +46,30 @@ public class Practica8 {
                         }
 
                     } else if (op2 == 2) {
+                        try {
+                            ServesJDBC s = new ServesJDBC();
+                            s.mostrarColumna();
+                            System.out.println("Ingresa un campo: ");
+                            String campo = read.nextLine();
+                            s.mostrarCampo(campo);
+                            System.out.println("Ingresa un filtro: ");
+                            String valor = read.nextLine();
+                            s.consultaSQLInjection(campo, valor);
+                        } catch (ClassNotFoundException c) {
+                            System.out.println("No se pudo conectar");
+                            c.printStackTrace();
+
+                        } catch (SQLException e) {
+                            System.out.println("No se pudo conectar");
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            System.out.println("No se pudo escribir en el fichero");
+                            e.printStackTrace();
+
+                        }
+                    } else if (op2 == 3) {
                         ServesJDBC s = new ServesJDBC();
                         try {
-                 
                             s.mostrarCampo("bar");
                             System.out.println("Ingresa el nomre de tu bar favorito: ");
                             String valor1 = read.nextLine();
@@ -69,12 +88,9 @@ public class Practica8 {
                         } catch (IOException e) {
                             System.out.println("No se pudo escribir en el fichero");
                             e.printStackTrace();
-
                         }
-
-                    } else if (op2 == 3) {
+                    } else if (op2 == 4) {
                         seguir2 = false;
-
                     } else {
                         System.out.println("Opción no valida.");
                     }
@@ -82,6 +98,8 @@ public class Practica8 {
                 }// while
 
             } else if (op1 == 2) {
+                seguir1 = false;
+            } else if (op1 == 3) {
                 seguir1 = false;
 
             } else {
@@ -97,7 +115,8 @@ public class Practica8 {
 
         System.out.println("********************************");
         System.out.println("1- Consulta");
-        System.out.println("2- salir");
+        System.out.println("2- Update");
+        System.out.println("3- salir");
         System.out.println("********************************");
         System.out.println("Elige una opción: ");
 
@@ -109,8 +128,9 @@ public class Practica8 {
 
         System.out.println("********************************");
         System.out.println("1- Consulta statement");
-        System.out.println("2- Consulta prepared statement");
-        System.out.println("3- Volver");
+        System.out.println("2- Consulta sql injection");
+        System.out.println("3- Consulta prepared statement");
+        System.out.println("4- Volver");
         System.out.println("********************************");
         System.out.println("Elige una opción: ");
 

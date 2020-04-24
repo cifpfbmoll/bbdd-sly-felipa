@@ -1,0 +1,4 @@
+select * from serves where bar='The Edge'BAR    BEER    PRICE
+The Edge    Amstel    2.75
+The Edge    Budweiser    2.5
+The Edge    Corona    3.0

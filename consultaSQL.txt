@@ -9,3 +9,139 @@ The Edge    Amstel    2.75
 The Edge    Budweiser    2.5
 The Edge    Corona    3.0
 
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+Down Under Pub    Corona    3.0
+The Edge    Corona    3.0
+James Joyce Pub    Corona    3.25
+Satisfaction    Corona    2.75
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+
+--- selectST ---
+BAR    BEER    PRICE
+Down Under Pub    Corona    3.0
+The Edge    Corona    3.0
+James Joyce Pub    Corona    3.25
+Satisfaction    Corona    2.75
+
+--- selectST ---
+BAR    BEER    PRICE
+Down Under Pub    Corona    3.0
+The Edge    Corona    3.0
+James Joyce Pub    Corona    3.25
+Satisfaction    Corona    2.75
+
+--- selectST ---
+BAR    BEER    PRICE
+James Joyce Pub    Dixie    3.0
+Satisfaction    Dixie    2.75
+
+--- selectST ---
+BAR    BEER    PRICE
+The Edge    Amstel    2.75
+The Edge    Budweiser    2.5
+The Edge    Corona    3.0
+
+--- selectST ---
+BAR    BEER    PRICE
+James Joyce Pub    Dixie    3.0
+Satisfaction    Dixie    2.75
+
+--- selectST ---
+BAR    BEER    PRICE
+The Edge    Amstel    2.75
+The Edge    Budweiser    2.5
+The Edge    Corona    3.0
+
