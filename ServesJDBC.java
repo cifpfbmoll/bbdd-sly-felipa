@@ -36,10 +36,10 @@ public class ServesJDBC {
 
         if (!fichero.exists()) {
             fichero.createNewFile();
-            System.out.println("\nEl fichero se ha creado. Se comienza a escribir\n");
+            System.out.println("\nEl fichero se ha creado.\n");
 
         } else {
-            System.out.println("\nEl fichero existe. Se comienza a escribir\n");
+            System.out.println("\nEl fichero existe.\n");
         }
         BufferedWriter escritor = new BufferedWriter(new FileWriter(fichero, true));
 
@@ -76,15 +76,19 @@ public class ServesJDBC {
     }
 
     public void consultaSQLInjection(String campo, String valor) throws SQLException, ClassNotFoundException, IOException {
+//select * from serves where bar='like "T%"';
+//SQL> select * from serves where bar='The Edge' and beer='' or ''='';7
+//select * from serves where bar='The Edge' or ''='';
+// select * from serves where bar='' or bar like 'S%';
 
         String rutaEscribir = "C:/Users/sly/Documents/NetBeansProjects/Practica8/src/practica8/consultaSQLinjection.txt";
         File fichero = new File(rutaEscribir);
         if (!fichero.exists()) {
             fichero.createNewFile();
-            System.out.println("\nEl fichero se ha creado. Se comienza a escribir\n");
+            System.out.println("\nEl fichero se ha creado.\n");
 
         } else {
-            System.out.println("\nEl fichero existe. Se comienza a escribir\n");
+            System.out.println("\nEl fichero existe.\n");
         }
         BufferedWriter escritor = new BufferedWriter(new FileWriter(fichero, true));
         String consulta = "";
@@ -93,38 +97,40 @@ public class ServesJDBC {
         abrirConectar();
 
         // compruebo qué campo está ingresando
-        if (campo.equals(
-                "bar") || campo.equals("BAR")) {
+//        if (campo.equals(
+//                "bar") || campo.equals("BAR")) {
+//
+//            if (valor.equals("Down Under Pub")) {
+//
+//                //se ingresa la consulta
+//                // con esta sintaxis se da la posibilidad que la cadena pueda ser
+//                // cambiada. como consecuencia la consulta puede proporcionar más
+//                //información de la inicialmente pensada.
+//                consulta = "select * from serves where " + campo + "='" + valor + "'";
+//            } else if (valor.equals("James Joyce Pub")) {
+//
+//                consulta = "select * from serves where " + campo + "='" + valor + "'";
+//            } else if (valor.equals("Satisfaction")) {
+//
+//                consulta = "select * from serves where " + campo + "='" + valor + "'";
+//            } else if (valor.equals("Talk of the Town ")) {
+//
+//                consulta = "select * from serves where " + campo + "='" + valor + "'";
+//            } else if (valor.equals("The Edge")) {
+//                consulta = "select * from serves where " + campo + "='" + valor + "'";
+//            } else {
+//                System.out.println("No existe el bar");
+//            }
+//        } else if (campo.equals(
+//                "beer") || campo.equals("BEER")) {
+//        } else if (campo.equals(
+//                "price") || campo.equals("PRICE")) {
+//        } else {
+//            System.out.println("Ese campo no existe");
+//        }
+//
+        consulta = "select * from serves where " + campo + "='" + valor + "'";
 
-            if (valor.equals("Down Under Pub")) {
-
-                //se ingresa la consulta
-                // con esta sintaxis se da la posibilidad que la cadena pueda ser
-                // cambiada. como consecuencia la consulta puede proporcionar más
-                //información de la inicialmente pensada.
-                consulta = "select * from serves where " + campo + "='" + valor + "'";
-            } else if (valor.equals("James Joyce Pub")) {
-
-                consulta = "select * from serves where " + campo + "='" + valor + "'";
-            } else if (valor.equals("Satisfaction")) {
-
-                consulta = "select * from serves where " + campo + "='" + valor + "'";
-            } else if (valor.equals("Talk of the Town ")) {
-
-                consulta = "select * from serves where " + campo + "='" + valor + "'";
-            } else if (valor.equals("The Edge")) {
-                consulta = "select * from serves where " + campo + "='" + valor + "'";
-            } else {
-                System.out.println("No existe el bar");
-            }
-
-        } else if (campo.equals(
-                "beer") || campo.equals("BEER")) {
-        } else if (campo.equals(
-                "price") || campo.equals("PRICE")) {
-        } else {
-            System.out.println("Ese campo no existe");
-        }
         rs = st.executeQuery(consulta);
         escritor.write(consulta + "\n");
         rsmd = rs.getMetaData();

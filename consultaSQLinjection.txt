@@ -1,4 +1,66 @@
-select * from serves where bar='The Edge'BAR    BEER    PRICE
+select * from serves where ''=''''
+BAR    BEER    PRICE
+select * from serves where ''=''''
+BAR    BEER    PRICE
+select * from serves where bar='The Edge or beer='' or ''='''
+BAR    BEER    PRICE
+select * from serves where bar=''' or 1=1'
+BAR    BEER    PRICE
+select * from serves where bar=''' or 1=1 --'
+BAR    BEER    PRICE
+select * from serves where bar=''' '
+BAR    BEER    PRICE
+select * from serves where bar=''' or 1=1'
+BAR    BEER    PRICE
+select * from serves where ''=''' or 1=1'
+BAR    BEER    PRICE
+select * from serves where bar='or 1=1'
+BAR    BEER    PRICE
+select * from serves where ''=''
+BAR    BEER    PRICE
+select * from serves where ''=''or bar='The Edge'''
+BAR    BEER    PRICE
+select * from serves where ''=''or bar='The Edge'--''
+BAR    BEER    PRICE
 The Edge    Amstel    2.75
 The Edge    Budweiser    2.5
 The Edge    Corona    3.0
+select * from serves where ''=''or bar like 'S%' or bar='The Edge' --''
+BAR    BEER    PRICE
+The Edge    Amstel    2.75
+The Edge    Budweiser    2.5
+The Edge    Corona    3.0
+Satisfaction    Amstel    2.75
+Satisfaction    Budweiser    2.25
+Satisfaction    Corona    2.75
+Satisfaction    Dixie    2.75
+Satisfaction    Full Sail    2.75
+select * from serves where ''=''or bar like 'S%' or bar='The Edge' --'''
+BAR    BEER    PRICE
+The Edge    Amstel    2.75
+The Edge    Budweiser    2.5
+The Edge    Corona    3.0
+Satisfaction    Amstel    2.75
+Satisfaction    Budweiser    2.25
+Satisfaction    Corona    2.75
+Satisfaction    Dixie    2.75
+Satisfaction    Full Sail    2.75
+select * from serves where ''=''or 1=1 --'''
+BAR    BEER    PRICE
+Down Under Pub    Amstel    2.75
+Down Under Pub    Budweiser    2.25
+Down Under Pub    Corona    3.0
+The Edge    Amstel    2.75
+The Edge    Budweiser    2.5
+The Edge    Corona    3.0
+James Joyce Pub    Amstel    3.0
+James Joyce Pub    Corona    3.25
+James Joyce Pub    Dixie    3.0
+James Joyce Pub    Erdinger    3.5
+Satisfaction    Amstel    2.75
+Satisfaction    Budweiser    2.25
+Satisfaction    Corona    2.75
+Satisfaction    Dixie    2.75
+Satisfaction    Full Sail    2.75
+Talk of the Town    Amstel    2.5
+Talk of the Town    Budweiser    2.2
